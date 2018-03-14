@@ -1,0 +1,96 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.6, trim axis left, trim axis right]
+\begin{axis}[
+    width=1\textwidth,
+    height=1\textwidth,
+    xlabel={Number of factors},
+    ylabel={Time taken (s)},
+    xmin=1.0, xmax=21.0,
+    ymin=8.5e-05, ymax=0.022634,
+    xticklabels={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    xtick={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    ytick={8.5e-05, 0.0023399, 0.0045948, 0.0068497, 0.0091046, 0.0113595, 0.0136144, 0.0158693, 0.0181242, 0.0203791},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-max}] {
+    x    y    y-max
+    11	0.00559505	0.00237995
+10	0.004813025	0.001770975
+13	0.0068751	0.0012429
+12	0.00685815	0.00130485
+15	0.0090789	0.0028701
+14	0.009028825	0.001659175
+17	0.0151502	0.0053328
+16	0.009884375	0.000903625
+19	0.013307125	0.001105875
+18	0.0132696	0.0018424
+20	0.013549025	0.009084975
+3	0.00065135	0.00041965
+2	0.000225	0.000209
+5	0.0013648	0.0011552
+4	0.0008925	0.0007915
+7	0.002965925	0.001411075
+6	0.00314	0.001867
+9	0.0041661	0.0011099
+8	0.0075055	0.0093325
+
+    };
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-min}] {
+    x    y    y-min
+    11	0.00559505	-0.00139505
+10	0.004813025	-0.000838025
+13	0.0068751	-0.0011631
+12	0.00685815	-0.00095815
+15	0.0090789	-0.0011349
+14	0.009028825	-0.002366825
+17	0.0151502	-0.0045782
+16	0.009884375	-0.001215375
+19	0.013307125	-0.002149125
+18	0.0132696	-0.0019636
+20	0.013549025	-0.004818025
+3	0.00065135	-0.00040235
+2	0.000225	-0.00014
+5	0.0013648	-0.0008808
+4	0.0008925	-0.0003565
+7	0.002965925	-0.000789925
+6	0.00314	-0.001623
+9	0.0041661	-0.0007951
+8	0.0075055	-0.0039055
+
+    };
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-0.3cm}
+\caption{Medium primes, close primes}\label{fig:PollardsRhoAlgorithmMediumcloseprimesfactors}
+\end{figure}
+

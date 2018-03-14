@@ -1,0 +1,176 @@
+\chapter{Methods}
+
+\section{Algorithm Implementations}
+
+%%%%
+%% TRIAL DIVISION
+%%%%
+\subsection{Trial Division}
+
+The Trial Division algorithm that has been adapted in this paper supports two modes of stepping - every single step or every odd step. Both modes start from $2$ and step up, successively dividing $N$ by any found factors. This process continues until $N=1$, that is, the number is fully factorized. The decision to implement both modes was based on the notion that since it is a simpler algorithm, the simplest mode should be tested. To allow for possibly competitive performance, the odd step was also implemented.
+
+The pseudocode for both algorithms used can be read below in ~\ref{fig:trialDivision1} and ~\ref{fig:trialDivision2}.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \begin{minted}[frame=none, framesep=10mm, baselinestretch=1.2, bgcolor=white, fontsize=\footnotesize, linenos]{text}
+def TrialDivision(N)
+    f = 1
+    while N > 1
+        if N is divisable by f
+            f is a factor. Divide N by f
+        else
+            increment f by one
+        \end{minted}
+    \end{minipage}
+    \caption{Pseudocode for Trial Division}
+    \label{fig:trialDivision1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \begin{minted}[frame=none, framesep=2mm, baselinestretch=1.2, bgcolor=white, fontsize=\footnotesize, linenos]{text}
+def TrialDivision(N)
+    f = 3
+    while N is divisable by 2
+        2 is a factor. Divide N by 2
+    while N > 1
+        if N is divisable by f
+            f is a factor. Divide N by f
+        else
+            increment f by 2
+        \end{minted}
+    \end{minipage}
+    \caption{Pseudocode for Trial Division, odd step}
+    \label{fig:trialDivision2}
+\end{figure}
+
+%%%%
+%% FERMAT'S FACTORIZATION
+%%%%
+\subsection{Fermat's Factorization}
+
+The Fermat's Factorization method implemented in this paper starts off by checking if the number to be factorized $n$ is divisible by two.
+
+ \begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \begin{minted}[frame=none, framesep=2mm, baselinestretch=1.2, bgcolor=white, fontsize=\footnotesize, linenos]{text}
+
+if n % 2 == 0:
+    return None
+    
+a = ceil(sqrt(n))
+b2 = a*a - n
+while b2 is not square:
+    a += 1
+    b2 = a*a - n
+b = sqrt(b2)
+return p = (a + b), q = (a - b)
+        
+        
+            \end{minted}
+    \end{minipage}
+    \caption{Fermat's factorization method}
+    \label{fig:FermatsFactorization}      
+ \end{figure}
+%%%%
+%% POLLARDS RHO ALGORITHM
+%%%%
+\subsection{Pollards Rho Algorithm}
+
+The Pollard's Rho ($\rho$) Algorithm implemented in this paper starts to check if the number to be factorized, $N$, is $1$, handling an edge case. To be able to find an arbitrary amount of factors instead of the regular two, the algorithm works on a stack. $N$ is first added to the stack. For as long as possible, a number is taken from the stack and checked for primality. If the number, $a$, is prime, then $a$ is a factor in $N$. If not, calculate $g(x)$, $y=g(g(x))$ and $f=gcd(x - y, a)$ for as long as $f=1$. If $f=N$ another choice for $g(x)$ is made. If not, $f$ and $a/f$ are factors and added to the stack to be checked. The choices of $g(x)$ were determined by testing different options one by one and then combining them in a logical way. The choices were $g(x)=x^2+1$, then $g(x)=x^3+1$ and lastly $g(x)=x+1$.
+
+The pseudocode for the algorithm can be read below in ~\ref{fig:pollardsRhoAlgorithm}.
+ 
+ \begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \begin{minted}[frame=none, framesep=2mm, baselinestretch=1.2, bgcolor=white, fontsize=\footnotesize, linenos]{text}
+if N is 1
+    1 is a factor. Stop
+add N to the stack 'stack' to try with the first g(x)
+while the stack is not empty
+    pop an element a from the stack
+    if a is prime
+        a is a factor
+    else
+        f = 1, x = 2, y = 2
+        while f is 1
+            x = g(x), y = g(g(x))
+            f = gcd(x - y, a)
+        if f is N
+            add a to stack to try with the next g(x)
+        else
+            add f and a / f to the stack
+        \end{minted}
+    \end{minipage}
+    \caption{Pseudocode for Pollard's $\rho$ Algorithm}
+    \label{fig:pollardsRhoAlgorithm}
+\end{figure}
+
+Before benchmarking Pollard's Rho Algorithm, different choices of $g(x)$, $x_0$ and $y_0$ will be tested.
+
+The choices of $g(x)$ tested are $g(x)=x^2+1$, $g(x)=x^3+1$, $g(x)=x^2+3$ and $g(x)=x+1$. The first choice is the default, usually associated with the algorithm. The middle two are functions chosen to test whether different exponents or offsets make any different. The last choice is similar to Trial Division, successively stepping by one. The last choice was chosen for its ability to always factorize the numbers tested since no numbers in the number series would be missed.
+
+The choices of $x_0$ and $y_0$ tested are the default $x_0=y_0=2$ and $\ceil[\big]{\sqrt{n}}$ where $n$ is the number to factorize. The first choice is usually associated with the algorithm. The choice of testing the square root of $n$ was made to see if it is better to start near a factor of $n$.
+
+All the tests on different functions $g(x)$ and values $x_0, y_0$ was tested using numbers consisting of two primes. The prime factors were between $2$ and $25$ each.
+
+Before running further tests, the above tests determined what choices for $g(x)$, $x_0$ and $y_0$ were to be made.
+
+%%%%
+%% LENSTRA'S ELLIPTIC CURVE FACTORIZATION ALGORITHM
+%%%%
+\subsection{Lenstra's Elliptic Curve Factorization Algorithm}
+
+The Lenstra's Elliptic Curve Factorization Algorithm implemented in this paper starts of by checking if the given number to factorize is equal to one. This is made to handle the edge case of one. The trivial factors are of no relevance. The algorithm works with a stack. The number $n$ is the first element in the stack. For as long as possible an element is taken from the stack and checked for primality. If the element is a prime number then it is a factor in $n$. If not, choose $x, y, A \in Z_n$ and $P= (x, y)$. Calculate $kP = (k-1)P + P$ until the modular inverse can no longer be calculated. Then a factor is found and is given by $gcd(\text{modular inverse}, n)$ and is added to the stack for later primality test. 
+
+The psuedocode for the algorithm can be read below in \ref{fig:LenstrasEllipticCurveFactorizationAlgorithm}.
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \begin{minted}[frame=none, framesep=2mm, baselinestretch=1.2, bgcolor=white, fontsize=\footnotesize, linenos]{text}
+x, y, A = random element in Zn
+Q = (x, y)
+if a modular inverse exists:
+    P = Q + Q
+    while P + Q can be calculated 
+        if iterations is less then maximum iterations
+            if modular inverse exists in kP
+                kP = (k-1)P + Q
+            else
+                add gcd(modular inverse, n) to the stack of factors
+        else
+            no factor found, try with new random elements
+else
+    add gcd(modular inverse, n) to the stack of factors
+        \end{minted}
+    \end{minipage}
+     \caption{Lenstra's Elliptic Curve Factorization Algorithm}
+    \label{fig:LenstrasEllipticCurveFactorizationAlgorithm}      
+ \end{figure}
+ 
+ In this paper's implementation of Lenstra's Elliptic Curve Factorization Algorithm a set of different maximum iterations are tested. The iterations are given by $\text{maximum iterations} = \{\sqrt{n}, 1, 2, 5, 10, 15, 20, 25, 50, 100, 200, 1000, 2000, 3000,\\ 5000, 10000, 25000, 50000, 150000, 15000000\}$. The main goal of interrupting the algorithm after a fixed amount of iterations was to find out if it would be faster to choose new random elements and let the algorithm loop until it would find a factor. Literature suggests that interrupting Lenstra's algorithm would in some cases be faster than letting the algorithm be run in full \cite{LenstrasFactorizationAlgorithm}.
+%%%%
+%% THE QUADRATIC SIEVE
+%%%%
+\subsection{The Quadratic Sieve}
+
+The complexity of the algorithm itself as well as the version adapted in this paper is out of scope for this paper.
+
+Due to the aforementioned complexity of the algorithm and the non-trivial choice of parameters $B$ and $V$, the algorithm will only be partially benchmarked. The number and parameter combinations tested were find by successively adjusting the parameters from lower, close-to-zero, values to higher ones.
+
+The values tested will be included in the results in figure \ref{fig:QuadraticSieveTable}.
+
+\section{Data Gathering}
+
+The project was hosted on a private instance of CoCalc - Collaborative Calculation in the Cloud. The instance was run on a single computer with no consideration of its absolute performance. Since relative performance is of importance, the simpler and more cost-effective setup of a single computer would in theory produce the same results as testing the algorithms on a distributed system, albeit slower. The algorithms were implemented in Sage / Python. The platform was a great fit for its ability to provide a fast development time with almost no time spent on setting the project up. Given the availability of tools such as Sage, the factorization method implementations needed no further implementation of mathematical definitions or functions such as calculations using arbitrary large numbers. The project in its entirety (code, data and paper) is freely available on the open source hosting site GitHub: \href{https://github.com/AlexGustafsson/practical-factorization-comparison}{https://github.com/AlexGustafsson/practical-factorization-comparison}.
+
+All of the algorithms were run on the same computer. The algorithms were implemented in Python and heavily utilized Sage due to their aforementioned support of mathematical tools allowing for a fast development time.
+
+Number suites were generated to hold all the data necessary to benchmark various algorithms. A number suite is a particular data set consisting of a class of numbers to be tested. The number suites used in this paper partly consisted of numbers constructed by multiplying either randomly chosen small, medium, large or even larger primes. Two other classes were used, numbers consisting of primes close to each other ($3$ and $7$ are primes close to $5$) or far from each other. The amount of factors used in each class varied between two and twenty with the exception of larger primes which tested two and three factors. To avoid issues with algorithms not able to factor numbers with $2$ as a factor, no generated number suite contains the factor $2$. To ensure that consistent benchmarks were collected, a number suite was also generated to hold numbers consisting of two prime factors of between two and 60 bits. The used number suites are included in the appendix \ref{numbersuites}. Although the even edge cases could easily be handled, the algorithms implemented in this paper are meant to be true to the original definition and the fixes are therefore omitted.
+
+When algorithms failed to factorize numbers within a reasonable amount of time, the benchmarks were terminated. For example, Trial Division took over $3000$ seconds to factorize a number consisting of two factors of $30$ bits each (see figure \ref{fig:TrialDivisionGrowingprimesbits}). Due to the algorithm's deterministic nature, the time required for further testing could easily be seen to be beyond the time available. Both modes of Trial Division, Lenstra's Elliptic Curve Factorization Method and Fermat's Factorization algorithm were terminated. Pollard's Rho Algorithm completed all tests. The raw data of the used benchmarks are available on the repository hosted by GitHub - \href{https://github.com/AlexGustafsson/practical-factorization-comparison}{https://github.com/AlexGustafsson/practical-factorization-comparison}.

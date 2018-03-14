@@ -1,0 +1,95 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.6, trim axis left, trim axis right]
+\begin{axis}[
+    width=1\textwidth,
+    height=1\textwidth,
+    xlabel={Number of factors},
+    ylabel={Time taken (s)},
+    xmin=1.0, xmax=21.0,
+    ymin=4e-06, ymax=0.086044,
+    xticklabels={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    xtick={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    ytick={4e-06, 0.008608, 0.017212, 0.025816, 0.03442, 0.043024, 0.051628, 0.060232, 0.068836, 0.07744},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-max}] {
+    x    y    y-max
+    11	0.0024500125	0.0044569875
+10	0.0024915375	0.0035004625
+13	0.0027948125	0.0049791875
+12	0.00277065	0.00500235
+15	0.00369865	0.00967835
+14	0.00460875	0.08143525
+17	0.0044126375	0.0067163625
+16	0.004744625	0.012151375
+19	0.00521595	0.00631705
+18	0.00618905	0.02030195
+20	0.005456725	0.010482275
+3	0.00060495	0.00412205
+2	0.0001675375	0.0013684625
+5	0.0009947375	0.0031522625
+4	0.0008404875	0.0021455125
+7	0.0019907	0.0064653
+6	0.0013938	0.0053482
+9	0.0021934125	0.0048965875
+8	0.001620025	0.007044975
+
+    };
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-min}] {
+    x    y    y-min
+    11	0.0024500125	-0.0019870125
+10	0.0024915375	-0.0019205375
+13	0.0027948125	-0.0021528125
+12	0.00277065	-0.00237965
+15	0.00369865	-0.00285765
+14	0.00460875	-0.00353475
+17	0.0044126375	-0.0031056375
+16	0.004744625	-0.003536625
+19	0.00521595	-0.00390495
+18	0.00618905	-0.00467305
+20	0.005456725	-0.003453725
+3	0.00060495	-0.00058495
+2	0.0001675375	-0.0001635375
+5	0.0009947375	-0.0008337375
+4	0.0008404875	-0.0007644875
+7	0.0019907	-0.0017447
+6	0.0013938	-0.0011828
+9	0.0021934125	-0.0019854125
+8	0.001620025	-0.001332025
+
+    };
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-0.3cm}
+\caption{LenstrasEllipticCurveFactorization Small Close Primes}\label{fig:LenstrasEllipticCurveFactorizationSmallcloseprimes(maximumIterations:1)factors}
+\end{figure}

@@ -1,0 +1,27 @@
+\label{ComparisonBitsLowest}
+\pgfplotstabletypeset[
+    columns={bits, algorithm, time},
+    col sep=tab,
+    begin table=\begin{longtable},
+    end table=\end{longtable},
+    every head row/.style={
+        before row=\toprule,
+        after row=\midrule
+    },
+    columns/bits/.style={
+        column name=Number of bits,
+        column type=p{0.3\textwidth}
+    },
+    columns/algorithm/.style={
+        column name=Algorithm,
+        string type,
+        column type=p{0.4\textwidth}
+    },
+    columns/time/.style={
+        column name=Time taken (s),
+        column type=p{0.3\textwidth}
+    },
+    every last row/.style={
+        after row=\bottomrule
+    }
+]{ComparisonPlots/ComparisonBitsLowest.dat}

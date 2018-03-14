@@ -1,0 +1,25 @@
+\subsection{Two Factors}
+
+In figure \ref{fig:TrialDivisionGrowingprimesbits}, the default Trial Division algorithm shows total time taken to factorize a number consisting of two to 31 bits. In the figure \ref{fig:TrialDivisionGrowingprimes(modified:True)bits} the modified version of Trial Division can be seen.
+
+\input{TrialPlots/TrialDivisionBits.tex}
+
+\input{TrialPlots/TrialDivisionMBits.tex}
+
+\subsection{Multiple Factors}\label{PollardsMultipleFactors}
+
+Below are two figures depicting benchmarks on small primes using both modes of the implemented Trial Division algorithm. The regular mode is shown in figure \ref{fig:TrialDivisionsmallprimesfactors} and the modified version with odd stepping is shown in \ref{fig:TrialDivisionsmallprimes(modified:True)factors}.
+
+\input{TrialPlots/TrialDivisionSmall.tex}
+
+\input{TrialPlots/TrialDivisionSmallM.tex}
+
+The largest benchmarks made are shown in the two figures below - for the unmodified and modified algorithm respectively.
+
+\input{TrialPlots/TrialDivisionLarger.tex}
+
+\input{TrialPlots/TrialDivisionLargerM.tex}
+
+Overall the unmodified algorithm seen in figure \ref{fig:TrialDivisionLargerprimesfactors} seem to take twice as long as the modified algorithm shown in figure \ref{fig:TrialDivisionLargerprimes(modified:True)factors}.
+
+The rest of the data collected on the Trial Division algorithm can be found in the appendix \ref{trialdivisionplots}.

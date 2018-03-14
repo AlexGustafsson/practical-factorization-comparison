@@ -1,0 +1,109 @@
+\chapter{Discussion}
+
+\section{Delimitations}
+To measure the optimal performance of factorization algorithms, the hardware, software and algorithms used would have to be optimal. Since the time given to write the report was limited, so was the time available to implement the hardware and software solutions necessary to run benchmarks. For that reason the solutions were chosen and written due to them being flexible and straight-forward to implement, rather than optimal.
+
+As a result of us cutting performance corners, the performance of the algorithm shown in this paper may not depict actual performance in true-to-life scenarios.
+
+Possible improvements could be to limit the amount of algorithms tested to two, allowing more time to be put into profiling them. Such profiling could allow for a greater insight in the algorithms, permitting us to improve our implementations and make them more lean and performant. Doing so, would however defeat the purpose of the paper - comparing a chosen set of factorization methods by their performance.
+
+\section{Result}
+
+%%%%
+%% TRIAL DIVISION
+%%%%
+\subsection{Trial Division}
+
+Trial Division did not quite meet the expectations we had in mind, this may be due to the fact that we did not change the original algorithm. We did however expect the algorithm to perform worse on larger numbers. One possible optimization could be to continue testing for factors from the last found factor, instead of trying all the way from one once more. The algorithm succeeded in factorizing all the tested numbers consisting of multiple prime factors.
+
+%%%%
+%% FERMAT'S FACTORIZATION
+%%%%
+\subsection{Fermat's Factorization}
+
+Fermat's Factorization method fell short when tested on the larger primes included in our number suites. In some cases the factorization could not be finished because the algorithm was just unbearably slow. This resulted in us having less data on Fermat's algorithm, since it would take too long for the algorithm to finish the factorization of all of the numbers to be tested. For example the $38$ bit number shown in figure \ref{fig:FermatsFactorizationGrowing} took well over six hours to factorize.
+
+\subsection{Odd Number of Primes}
+When Fermat's method is used on a number that is made up of an odd number of prime factors - let $n$ be that number - it takes a considerably longer amount of time to factorize $n$ than when given a number made up of an even number of primes. More testing would be needed for us to be able to draw a solid conclusion. Our theory for the behaviour is that when calculating the square root of $n$ for a number $n$ that consists of an odd number of prime factors, it takes more iterations to find the first prime number. The algorithm uses the square root of $n$ as a start since it is likely near one of the factors of $n$ given that $n$ consists of two equally sized prime factors. Whenever $n$ consists of an odd number of prime factors, however, the square root of $n$ would not be as near one of the factors as the algorithm would expect and the algorithm performs worse.
+
+%%%%
+%% POLLARD'S RHO ALGORITHM
+%%%%
+\subsection{Pollard's Rho Algorithm}
+
+\subsection{Differences in choice of $g(x)$}
+
+It was made evident that the choice of $g(x)$ may heavily impact the performance of the algorithm. Although the default choice of $g(x)=x^2+1$ seemed to perform the best overall, $g(x)=x^3+1$ was close by and even better for some numbers tested.
+
+The choice of $g(x)=x+1$ to step similarly to Trial Division was obviously the worst of those tested. At its worst it performed almost $3000$ times worse than the second worse ($g(x)=x^2+3$). Note however that this choice was one of the two that was able to factorize a number consisting of two primes of two bits ($g(x)=x^3+1$ and $g(x)=x+1$).
+We believe that this particular choice of $g(x)$ performed the worst since it is the choice that most defeats the purpose of Pollard's algorithm - to effectively find a cycle and use it to find a factor.
+
+Interestingly, to be able to factorize numbers in a way that always works, several choices of $g(x)$ had to be made in serial. A performant way to factorize numbers consisting of several factors was found to be using $g(x)=x^2+1$, $g(x)=x^3+1$ and lastly $g(x)=x+1$. We have not come to any conclusion as to why those choices performed so well.
+
+It is possible that there are functions other than those tested that would perform better.
+
+\subsection{Differences in Choice of $x_0$ and $y_0$}
+
+There seem to be no observable performance gain to be made from choosing $x_0=y_0=\ceil[\big]{\sqrt{n}}$ (where $n$ is the number to factorize) over $x_0=y_0=2$. This result initially came as a surprise to us since our intuition told us that starting the algorithm closer to a factor would result in lower factorization time. We think that this is due to how the algorithm works. Unlike Trial Division or the like, Pollard's Rho Algorithm does not try to find the first occurrence of a factor - rather a cycle. Since starting closer to a factor does not seem to help the algorithm to faster enter a cycle - no performance gain is made.
+
+It is possible that there are starting values other than those tested that would perform better.
+
+\subsection{Two Factors}
+
+Pollard's Rho Algorithm seem to have done well in factorizing a number consisting of two prime factors. The algorithm succeeded in factorizing the largest number we tested - consisting of $60$ bits. Factorizing such a number took about three hours on our system.
+
+A quick test for our own understanding of the algorithm's growth showed that an exponential fit could result in a rather good prediction of the performance of Pollard's algorithm. Note that we do not have any evidence to support this claim.
+
+\subsection{Multiple Factors}
+
+Pollard's Rho Algorithm seem to have a slight correlation between every two of the smaller primes tested in figure \ref{fig:PollardsRhoAlgorithmsmallprimesfactors}. We were unable to find any reason as to why a correlation between the numbers can be seen.
+
+Judging from the figures shown in the results, section \ref{PollardsMultipleFactors}, the algorithm seems to be efficient factorizing multiple factors. This result is in line with what we found during our implementations. Pollard's algorithm was performing well generally with a few extremes.
+
+Pollard's Rho Algorithm seems to perform better when the number to be factorized consists of primes close to one another.
+
+It is possible that there are choices of $g(x)$ instead of $g_1(x)=x^2+1$, $g_2(x)=x^3+1$, $g_3(x)=x+1$ that would speed up the process. However, no further testing was done to prove that point. As it stands, our implementation effectively factorizes numbers consisting of two or more prime factors.
+
+%%%%
+%% LENSTRA'S ELLIPTIC CURVE FACTORIZATION ALGORITHM
+%%%%
+\subsection{Lenstra's Elliptic Curve Factorization Algorithm}
+
+Our implementation of Lenstra's Elliptic Curve Factorization Algorithm was poorly optimized. One change that could have been made when calculating $P + P$ would be to use more of the built-in Python solutions such as lambdas to get a faster factorization time. However, this possible optimization would have been out of scope for this paper.
+
+\subsection{Choice of maximum iterations}
+The choice of a maximum iterations did not have a dramatic impact on the algorithm. A minimal difference in time taken for a factor to be found could be seen. Moreover this time difference was not consistent. This difference appear because the algorithm is not probabilistic. Therefore any conclusion, other than stopping after a fixed amount of iterations had no impact, can not be drawn. For implementations of Lenstra's factorization algorithm other than ours, this might not be true. Interrupting after just a few iterations created more of a collision attack style rather than factorization.
+
+%%%%
+%% THE QUADRATIC SIEVE
+%%%%
+\subsection{The Quadratic Sieve}
+
+The quadratic sieve required manual choices for parameters $B$ and $V$. Although the algorithm mentions choices for $B$ to be close to $L(n)$ and $B\leq V \leq B^2$ we never found any values for which factorization completed within a reasonable amount of time. We did however succeed in manually finding a set of $15$ number and parameter combinations. These combinations were found by simply trying low values and successively stepping towards larger values.
+
+We did try to come up with regressions to the parameters we found, but there seemed to be no correlation between the data points due to the inaccurate results of all regressions tried. There may be more clever ways of figuring out what parameters to use. There is also a chance that the algorithm, which specializes in factorizing large numbers, is not fit to factorize the numbers tested by us. The algorithm could also possibly perform better when used on specialized systems. 
+
+%%%%
+%% COMPARISON
+%%%%
+\subsection{Comparison}
+
+\subsection{Two Factors}
+
+Trial Division failed to complete the factorization of all available numbers, as did the modified algorithm. It was also the slowest algorithm through out the benchmarks. The modified version of Trial Division performed better, but was still worse than the other algorithms tested. The sub-par performance of Trial Division was expected by us due to its simple algorithm. We did however expect the algorithm to perform better than it did for lower numbers. We believe that the algorithm performs so bad due to the large search space. Not even cutting the effective amount of numbers tested by two (as seen in the modified Trial Division algorithm) sufficed.
+
+Fermat's Factorization performed similarly to Pollard's Rho Algorithm for numbers consisting of two primes of between 2 and $29$ bits. The algorithm was the fastest algorithm for several numbers, $13$ out of $44$ times. The time taken by the algorithm grew faster than any other algorithm, however. Between $35$ and $44$ bits, the algorithm went from taking about $18$ minutes to over six hours. After that, the algorithm failed to complete within a reasonable amount of time. Fermat's algorithm performed better than we expected for lower numbers, but worse than we expected for larger numbers. The performance of Fermat's algorithm stayed rather stable up until $35$ bits were it starts to perform worse than any other algorithm. We are not entirely sure why this sudden drop in performance can be seen, but we believe it has to do with the time needed to calculate whether or not a number is a square number or not - an operation often carried out by the algorithm. We are unaware of any solutions to this problem beside trying to implement a faster check algorithm ourselves, which would be out of scope for this paper.
+
+In regards to the fact that the algorithm succeeded in completing all of our benchmarks, Pollard's Rho Algorithm stands out as the clear winner. The algorithm reliably factorized numbers consisting of primes of between two and $60$ bits and was the fastest algorithm $41$ out of $60$ times. Note however that the algorithm was the only contender beyond $44$ bits, resulting in a win count of $25$ out of the $44$ bit counts were the algorithm had competitors. Initially implementing the algorithms, we did not imagine the algorithm performing as well and reliably as it did. We believe the reliability of the algorithm comes from its deterministic nature. For as long as the same functions $g(x)$ are used in the same order each time (which our implementation guarantees), the output should be the same and take roughly the same amount of time.
+
+Lenstra's Elliptic Curve Factorization Method performed similarly to both Fermat's Factorization and Pollard's Rho Algorithm for bit counts lower than $18$. The algorithm was the fastest $5$ out of $31$ times. Lenstra's algorithm was the fastest for the first three tested numbers.
+
+\section{Multiple Factors}
+
+Trial Division did not meet the expectations we had in mind, this is due to the fact that we did not alter the original algorithm beyond changing the stepping mode. The main reason why our implementation of Trial division is slow can be linked to that when a factor is found the algorithm starts from the beginning again - counting upwards from one. This led to many unwanted iterations compared to starting from the found factor since Trial Division is known to find the factors in ascending order. Trial Division performed better on small multiple primes than Pollard's Rho Algorithm. Both forms of Trial Division completed all number suites containing multiple factors.
+
+Fermat's Factorization gave us a very inconsistent plot. The time was not linear and it seems like it was slower to factorize numbers consisting of an odd amount of prime factors. Fermat's method performed like expected. The algorithm was not good for large prime numbers and when compared to the other algorithms did well on the small numbers but fell quickly fell behind on the larger numbers.
+
+Pollard's Rho Algorithm proved to be a reliable algorithm for the factorization of multiple prime factors. The span between the minimum and maximum time taken for each test was lower than other algorithms tested - similar to Trial Division. Pollard's Rho Algorithm completed all number suites containing multiple factors.
+
+The Lenstra's Elliptic Curve Factorization Method implemented in this paper is far from optimized. This made it hard to compare the algorithm against for example Pollard's Rho Algorithm. Lenstra's algorithm did perform well until we came up to the larger primes. Lenstra's method was then left behind by Pollard's algorithm and could no longer keep up with the pace of Pollard's algorithm. Due to the inconsistency of Lenstra's algorithm there is a significant gap between the fastest and slowest factorization time. Sometimes the algorithm "got lucky" and found just about the right values for $x$, $y$ and $A$ immediately, giving us an incredibly fast factorization time.

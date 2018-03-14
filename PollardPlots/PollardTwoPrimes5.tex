@@ -1,0 +1,95 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.6, trim axis left, trim axis right]
+\begin{axis}[
+    width=1\textwidth,
+    height=1\textwidth,
+    xlabel={Number of bits},
+    ylabel={Time taken (s)},
+    xmin=1.0, xmax=21,
+    ymin=1.5e-05, ymax=0.0051386,
+    xticklabels={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,20, 21},
+    xtick={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21},
+    ytick={0.0000150000000000000, 0.000527360000000000, 0.00103972000000000, 0.00155208000000000, 0.00206444000000000, 0.00257680000000000, 0.00308916000000000, 0.00360152000000000, 0.00411388000000000, 0.00462624000000000},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-max}] {
+    x    y    y-max
+20	0.0088994	0.0001436
+3	2.51e-05	8.19e-05
+2	4.4e-05	0.000184
+5	5.34e-05	7.86e-05
+4	2.6e-05	3e-06
+7	7.86e-05	7.94e-05
+6	5.36e-05	7.84e-05
+9	0.0001385	1.25e-05
+8	0.0001217	7.63e-05
+15	0.001766	2.1e-05
+14	0.0009775	4.95e-05
+11	0.0001041	7.39e-05
+10	0.0003235	7.35e-05
+13	0.0008575	6.35e-05
+12	0.0001385	7.65e-05
+17	0.0051386	5.84e-05
+16	0.0011735	7.25e-05
+19	0.0040232	0.0011198
+18	0.0020383	0.0007457
+
+    };
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-min}] {
+    x    y    y-min
+20	0.0088994	-8.24e-05
+3	2.51e-05	-1.01e-05
+2	4.4e-05	-2.4e-05
+5	5.34e-05	-9.4e-06
+4	2.6e-05	-1e-06
+7	7.86e-05	-9.6e-06
+6	5.36e-05	-9.6e-06
+9	0.0001385	-2.5e-06
+8	0.0001217	-1.07e-05
+15	0.001766	-1.4e-05
+14	0.0009775	-2.05e-05
+11	0.0001041	-1.11e-05
+10	0.0003235	-1.25e-05
+13	0.0008575	-1.25e-05
+12	0.0001385	-9.5e-06
+17	0.0051386	-3.26e-05
+16	0.0011735	-1.65e-05
+19	0.0040232	-0.0001992
+18	0.0020383	-0.0001203
+
+    };
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-0.3cm}
+\caption{Factors between 2 and 20 bits}\label{fig:PollardsRhoAlgorithmGrowingprimesbits220}
+\end{figure}

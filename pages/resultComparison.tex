@@ -1,0 +1,27 @@
+\subsection{Two Factors}
+
+In the below figure - figure \ref{fig:ComparisonBits}, the tested algorithm (with the exception of the Quadratic Sieve) can be seen. Trial Division is shown in blue, Trial Division with modified step shown in green, Fermat's Factorization method shown in red, Pollard's Rho Algorithm shown in orange and lastly Lenstra's Elliptic Curve Factorization Method shown in pink.
+
+\input{ComparisonPlots/ComparisonBits.tex}
+
+Trial Division factorized numbers consisting of two factors between two and $31$ bits, taking between $0.000025$ and $3317.729958$ seconds respectively. The modified Trial Division algorithm factorized numbers consisting of two factors between two and $33$ bits, taking between $0.000021$ and $9208.879762$ seconds respectively.
+
+Fermat's Factorization method factorized numbers consisting of two factors between two and $42$ bits taking between $0.000007$ and $22132.913785$ seconds respectively.
+
+Pollard's Rho Algoritm factorized numbers consisting of two factors between two and $60$ bits, taking between $0.000015$ and $11321.818036$ seconds respectively.
+
+Lentra's Elliptic Curve Factorization Method factorized numbers consisting of two factors between two and $31$, taking between $0.000003$ and $4278.084354$ seconds respectively.
+
+The Quadratic Sieve factorized some numbers between $21$ ($5$ bits) and $21593381$ ($25$ bits), taking between $0.198635$ and $249.341536$ seconds as seen in figure \ref{fig:QuadraticSieve} and \ref{fig:QuadraticSieveTable}.
+
+By lowering the range of bits presented, the next plot was made. Trial Division is shown in blue, Trial Division with modified step shown in green, Fermat's Factorization method shown in red, Pollard's Rho Algorithm shown in orange and lastly Lenstra's Elliptic Curve Factorization Method shown in pink.
+
+\input{ComparisonPlots/ComparisonBits2.tex}
+
+\input{ComparisonPlots/ComparisonBits3.tex}
+
+The fastest algorithm for each tested number as well as the time taken by the algorithm is shown in appendix \ref{ComparisonBitsLowest}.
+
+\subsection{Multiple Factors}
+
+For data on multiple factors, please refer to the individual results for the algorithms - Trial Division \ref{TrialDivision}, Fermat's Factorization \ref{fig:FermatsFactorization}, Pollard's Rho Algorithm \ref{PollardsRhoAlgorithm} and Lenstra's Elliptic Curve Factorization Method \ref{LenstrasEllipticCurve}.

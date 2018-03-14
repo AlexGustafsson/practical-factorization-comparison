@@ -1,0 +1,96 @@
+\subsection{Differences in Choice of $g(x)$}
+Below are three plots used to determine the best choice for $g(x)$ when factorizing a number consisting of two prime factors. A lower value refers to lower time taken, which is considered better. The figure \ref{fig:pollardsAllModes} displays all tested functions - $g(x)=x^2+1$ in blue, $g(x)=x^3+1$ in red, $g(x)=x^2+3$ in green and $g(x)=x+1$ in orange. Figure \ref{fig:pollardsFasterModes} shows only the three fastest modes tested - not including $g(x)=x+1$. The figure \ref{fig:pollardsFastestModes} shows only the two fastest choices of $g(x)$ - $g(x)=x^2+1$ and $g(x)=x^3+1$.
+
+\begin{figure}[H]
+    \centering
+    \input{PollardPlots/PollardAllModes.tex}
+    \vspace{-0.3cm}
+    \caption{All four tested modes}\label{fig:pollardsAllModes}
+\end{figure}
+
+For small factors, all modes seem to perform equally well. More bits seem to make $g(x)=x+1$ (shown in orange) struggle. Removing the function from the plot yields another overview of the situation - figure \ref{fig:pollardsFasterModes} below.
+
+\begin{figure}[H]
+    \centering
+    \input{PollardPlots/PollardFastestModes.tex}
+    \vspace{-0.3cm}
+    \caption{The fastest three modes}\label{fig:pollardsFasterModes}
+\end{figure}
+
+For small factors, there still seem to be more or less equal performance for all of the choices. The choice of $g(x)=x^2+3$ (shown in red) struggles for one particular number consisting of $24$ bits. Removing that choice yields the last overview, that of the two fastest modes - shown in figure \ref{fig:pollardsFastestModes} below.
+
+\begin{figure}[H]
+    \centering
+    \input{PollardPlots/PollardsFasterModes.tex}
+    \vspace{-0.3cm}
+    \caption{The fastest two modes}\label{fig:pollardsFastestModes}
+\end{figure}
+
+For factors of lower bit count, $g(x)=x^2+1$ (shown in blue) and $g(x)=x^3+1$ (shown in green) seem to perform equally well. For larger bit count, blue seem to perform better.
+
+The choice of $g(x)=x^2+1$ and $g(x)=x^2+3$ failed to factorize a number consisting of prime factors of two bits.
+
+It should be noted that only about half of the available numbers to test were tested in the above benchmarks.
+
+Due to how $g(x)=x^2+1$ seemed to perform the best overall, but failed to factorize two bit numbers, fallbacks were chosen. These fallbacks were $g(x)=x^3+1$ and $g(x)=x+1$ respectively. The order was chosen for the functions' performance in the above tests.
+
+\subsection{Differences in Choice of $x_0$ and $y_0$}
+
+Below is a plot used to determine the best choice for the start values $x_0$ and $y_0$ when factorizing a number consisting of two prime factors. A lower value refers to lower time taken which is considered better. Figure \ref{fig:pollardsStart} displays the two tested start values. Blue represents $x_0=y_0=2$. Green represents $x_0=y_0=\ceil[\big]{\sqrt{n}}$ where $n$ is the number to factorize.
+
+\begin{figure}[H]
+    \centering
+    \input{PollardPlots/PollardStart.tex}
+    \vspace{-0.3cm}
+    \caption{The two tested start values}\label{fig:pollardsStart}
+\end{figure}
+
+For factors of lower bit count, $x_0=y_0=2$ (shown in blue) and $x_0=y_0=\ceil[\big]{\sqrt{n}}$ (shown in green) seem to perform equally well. For larger bit count, blue seem to perform better.
+
+It should be noted that only about half of the available numbers to test were tested in the above benchmarks.
+
+\subsection{Two Factors}
+
+\input{PollardPlots/PollardTwoPrimes.tex}
+
+In figure \ref{fig:PollardsRhoAlgorithmGrowingprimesbits260} all tested numbers can be seen. To better interpret the results, plots showing lesser ranges of tests can be found in the appendix in figure \ref{fig:PollardsRhoAlgorithmGrowingprimesbits250}, \ref{fig:PollardsRhoAlgorithmGrowingprimesbits240}, \ref{fig:PollardsRhoAlgorithmGrowingprimesbits230} and \ref{fig:PollardsRhoAlgorithmGrowingprimesbits220}, respectively.
+
+\subsection{Multiple Factors}\label{PollardsMultipleFactors}
+
+Below are seven groups of plots determining the performance of Pollard's Rho Algorithm. A lower value refers to lower time taken, which is considered better. The figures shown will be in ascending order within their respective class.
+
+\input{PollardPlots/PollardSmallFactors.tex}
+
+From the figure \ref{fig:PollardsRhoAlgorithmsmallprimesfactors} one can tell that the algorithm does not seem to perform equally well every time it is tested on the same number. Looking closely and with an open eye, there seem to be some correlation with every two data points. The reason for this correlation is not known. All in all, an approximate curve would have to be steeper than a linear fit. 
+
+\input{PollardPlots/PollardMediumFactors.tex}
+
+The figure \ref{fig:PollardsRhoAlgorithmmediumprimesfactors} shows signs of even more irregularity than figure \ref{fig:PollardsRhoAlgorithmsmallprimesfactors}. The average span between the lowest time taken and the maximum time taken is lower than the first figure. The slight correlation with every two data points seen in the previous figure seem to be lost. Interestingly the first data point, for two factors, seem to take about the same time as the first number tested for small primes.
+
+\input{PollardPlots/PollardLargeFactors.tex}
+
+The figure \ref{fig:PollardsRhoAlgorithmLargerprimesfactors} show one extreme point. Removing the point show a second figure show below in figure \ref{fig:PollardsRhoAlgorithmlargeprimesfactors2}.
+
+\input{PollardPlots/PollardLargeFactors2.tex}
+
+The figure shows an average span between the maximum time taken and the minimum time taken to factorize a number is about the same as shown for medium sized prime factors in figure \ref{fig:PollardsRhoAlgorithmmediumprimesfactors}.
+
+\input{PollardPlots/PollardLargerFactors.tex}
+
+When factorizing even larger numbers consisting of up to $20$ prime factors, Pollard's Rho Algorithm seem to perform under half a second for most numbers. By removing the highest three data points, the next figure was made to more clearly show the differences between the data points.
+
+\input{PollardPlots/PollardLargerFactors2.tex}
+
+\input{PollardPlots/PollardSmallCloseFactors.tex}
+
+Figure \ref{fig:PollardsRhoAlgorithmSmallcloseprimesfactors} shows numbers consisting of small prime factors close to one another. The factorization time span is clearly higher than that of previous benchmarks. The highest time taken for small primes shown in figure \ref{fig:PollardsRhoAlgorithmsmallprimesfactors} is about the same as the highest time taken for small close primes, shown above.
+
+\input{PollardPlots/PollardMediumCloseFactors.tex}
+
+Figure \ref{fig:PollardsRhoAlgorithmLargerprimesfactors} shows some extremes regarding factorization time spans.
+
+\input{PollardPlots/PollardLargeCloseFactors.tex}
+
+Figure \ref{fig:PollardsRhoAlgorithmLargecloseprimesfactors} shows two extremes. Removing the data point reveals a second figure, \ref{fig:PollardsRhoAlgorithmLargecloseprimesfactors2} which more clearly depicts the change depending on number of factors.
+
+\input{PollardPlots/PollardLargeCloseFactors2.tex}

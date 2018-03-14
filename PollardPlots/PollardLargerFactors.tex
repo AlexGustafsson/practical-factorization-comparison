@@ -1,0 +1,96 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.6, trim axis left, trim axis right]
+\begin{axis}[
+    width=1\textwidth,
+    height=1\textwidth,
+    xlabel={Number of factors},
+    ylabel={Time taken (s)},
+    xmin=1.0, xmax=21.0,
+    ymin=0.005904, ymax=6.304297,
+    xticklabels={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    xtick={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    ytick={0.005904, 0.6357433, 1.2655826, 1.8954219, 2.5252612, 3.1551005, 3.7849398, 4.4147791, 5.0446184, 5.6744577},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-max}] {
+    x    y    y-max
+    11	0.1717384	0.0004546
+10	0.1462144	0.0009446
+13	0.2267711	0.0005079
+12	0.1498062	0.0004768
+15	6.2717134	0.0325836
+14	0.8811528	0.0257212
+17	2.4309682	0.0055518
+16	0.3213873	0.0009757
+19	0.29544	0.000853
+18	0.3459382	0.0017908
+20	0.3569991	0.0021129
+3	0.0156157	0.0011213
+2	0.0070451	0.0076699
+5	0.0429597	0.0013313
+4	0.0338899	0.0082351
+7	0.078487	0.000818
+6	0.0539048	0.0017162
+9	0.1164037	0.0146073
+8	0.1185742	0.0009988
+
+    };
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-min}] {
+    x    y    y-min
+    11	0.1717384	-0.0007464
+10	0.1462144	-0.0006734
+13	0.2267711	-0.0005571
+12	0.1498062	-0.0005382
+15	6.2717134	-0.0294054
+14	0.8811528	-0.0081398
+17	2.4309682	-0.0127442
+16	0.3213873	-0.0008923
+19	0.29544	-0.001212
+18	0.3459382	-0.0019042
+20	0.3569991	-0.0013671
+3	0.0156157	-0.0002927
+2	0.0070451	-0.0011411
+5	0.0429597	-0.0003927
+4	0.0338899	-0.0011799
+7	0.078487	-0.000379
+6	0.0539048	-0.0004508
+9	0.1164037	-0.0021017
+8	0.1185742	-0.0009572
+
+    };
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-0.3cm}
+\caption{Larger primes}\label{fig:PollardsRhoAlgorithmLargerprimesfactors}
+\end{figure}
+

@@ -1,0 +1,96 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.6, trim axis left, trim axis right]
+\begin{axis}[
+    width=1\textwidth,
+    height=1\textwidth,
+    xlabel={Number of factors},
+    ylabel={Time taken (s)},
+    xmin=1.0, xmax=21.0,
+    ymin=7.3e-05, ymax=0.000303,
+    xticklabels={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    xtick={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    ytick={7.3e-05, 9.6e-05, 0.000119, 0.000142, 0.000165, 0.000188, 0.000211, 0.000234, 0.000257, 0.00028},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-max}] {
+    x    y    y-max
+    11	0.0002062	1.08e-05
+10	0.0001812	1.8e-06
+13	0.0001768	1.12e-05
+12	0.0001957	1.03e-05
+15	0.0002198	8.32e-05
+14	0.0002274	1.16e-05
+17	0.0002375	1.15e-05
+16	0.0002398	2.2e-06
+19	0.0002614	1.06e-05
+18	0.0002551	7.9e-06
+20	0.0002698	9.2e-06
+3	0.0001149	7.1e-06
+2	0.0001102	7.48e-05
+5	0.0001065	5e-07
+4	0.0001758	2.2e-06
+7	0.000216	1e-05
+6	0.0002106	1.04e-05
+9	0.0001534	8.6e-06
+8	0.0001508	1.2e-06
+
+    };
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-min}] {
+    x    y    y-min
+    11	0.0002062	-2.2e-06
+10	0.0001812	-3.2e-06
+13	0.0001768	-2.8e-06
+12	0.0001957	-3.7e-06
+15	0.0002198	-1.08e-05
+14	0.0002274	-2.4e-06
+17	0.0002375	-3.5e-06
+16	0.0002398	-1.8e-06
+19	0.0002614	-2.4e-06
+18	0.0002551	-3.1e-06
+20	0.0002698	-2.8e-06
+3	0.0001149	-1.9e-06
+2	0.0001102	-3.72e-05
+5	0.0001065	-1.5e-06
+4	0.0001758	-1.8e-06
+7	0.000216	-3.7e-05
+6	0.0002106	-1.6e-06
+9	0.0001534	-1.4e-06
+8	0.0001508	-8e-07
+
+    };
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-0.3cm}
+\caption{Small primes, modified algorithm}\label{fig:TrialDivisionsmallprimes(modified:True)factors}
+\end{figure}
+

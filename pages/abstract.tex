@@ -1,0 +1,15 @@
+\begin{abstract}
+\noindent This paper evaluates the relative performance of various algorithms for integer factorization, namely Trial Division, Fermat's Factorization, Pollard's Rho Algorithm, Lenstra's Elliptic Curve Factorization Algorithm and briefly the Quadratic Sieve.
+
+The algorithms are presented and described with regards to use and implementation details.
+
+No effort was made to optimize the implemented algorithms further than what was considered logical. No algorithm leverages parallel computing techniques, dynamic programming techniques or other techniques in order to gain performance. No consideration of performance was made when the software and programming stack were chosen.
+
+The project was hosted on a private instance of CoCalc - Collaborative Calculation in the Cloud. The factorization algorithms were implemented in Sage / Python.
+
+Our tests for factorizing between two and $60$ bit factors concluded that both implemented Trial Division algorithms performed the worst, followed by Lenstra's Elliptic Curve Factorization Method. None of the implemented Trial Division algorithms succeeded in factorizing factors larger than $33$ bits. The algorithm did however perform best of all tested algorithms for numbers consisting of factors between two and four bits. The algorithm performed similarly to both Fermat's Factorization method and Pollard's Rho Algorithm for numbers consisting of primes of between two and $18$ bits and failed to factorize within a reasonable amount of time for any factors larger than $31$ bits. Fermat's Factorization method was the second best factorization method for the numbers tested. Fermat's algorithm performed the best $13$ out of $42$ times. Pollard's Rho Algorithm was found to be the clear winner both in regards of reliability - Pollard's algorithm was the only algorithm to complete all tests as well as the best performing algorithm $25$ out of $44$ times (along with the $16$ times were it had no competition).
+
+By leveraging parallel computing, dynamic programming and other techniques, the performance would most likely increase.
+
+The project in its entirety (code, data and paper) is freely available on the open source hosting site GitHub:  \href{https://github.com/AlexGustafsson/practical-factorization-comparison}{https://github.com/AlexGustafsson/practical-factorization-comparison}. 
+\end{abstract}

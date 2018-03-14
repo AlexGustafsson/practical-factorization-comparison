@@ -1,0 +1,60 @@
+bits	algorithm	time
+2	Lenstra's Elliptic Curve Factorization	0.000003
+3	Lenstra's Elliptic Curve Factorization	0.000005
+4	Lenstra's Elliptic Curve Factorization	0.000005
+5	Fermat's Factorization	0.000013
+6	Fermat's Factorization	0.000012
+7	Lenstra's Elliptic Curve Factorization	0.000004
+8	Fermat's Factorization	0.000012
+9	Fermat's Factorization	0.000012
+10	Lenstra's Elliptic Curve Factorization	0.000004
+11	Fermat's Factorization	0.000012
+12	Pollard's Rho Algorithm	0.000129
+13	Fermat's Factorization	0.000395
+14	Fermat's Factorization	0.000193
+15	Fermat's Factorization	0.000043
+16	Fermat's Factorization	0.000034
+17	Fermat's Factorization	0.001709
+18	Pollard's Rho Algorithm	0.001918
+19	Pollard's Rho Algorithm	0.003824
+20	Pollard's Rho Algorithm	0.008817
+21	Fermat's Factorization	0.003153
+22	Pollard's Rho Algorithm	0.010484
+23	Pollard's Rho Algorithm	0.004726
+24	Pollard's Rho Algorithm	0.033146
+25	Pollard's Rho Algorithm	0.064159
+26	Pollard's Rho Algorithm	0.043284
+27	Pollard's Rho Algorithm	0.035551
+28	Pollard's Rho Algorithm	0.084783
+29	Pollard's Rho Algorithm	0.191224
+30	Pollard's Rho Algorithm	0.161975
+31	Pollard's Rho Algorithm	0.078828
+32	Fermat's Factorization	0.004225
+33	Pollard's Rho Algorithm	0.439183
+34	Pollard's Rho Algorithm	0.310229
+35	Pollard's Rho Algorithm	0.926861
+36	Pollard's Rho Algorithm	2.691020
+37	Fermat's Factorization	1.186023
+38	Pollard's Rho Algorithm	1.542419
+39	Pollard's Rho Algorithm	10.141911
+40	Pollard's Rho Algorithm	5.029217
+41	Pollard's Rho Algorithm	12.837914
+42	Pollard's Rho Algorithm	33.154922
+43	Pollard's Rho Algorithm	17.832010
+44	Pollard's Rho Algorithm	76.279777
+45	Pollard's Rho Algorithm	91.735950
+46	Pollard's Rho Algorithm	101.699730
+47	Pollard's Rho Algorithm	120.210968
+48	Pollard's Rho Algorithm	108.761925
+49	Pollard's Rho Algorithm	71.629152
+50	Pollard's Rho Algorithm	149.559654
+51	Pollard's Rho Algorithm	533.089112
+52	Pollard's Rho Algorithm	260.846512
+53	Pollard's Rho Algorithm	1288.400668
+54	Pollard's Rho Algorithm	1460.274068
+55	Pollard's Rho Algorithm	1498.098507
+56	Pollard's Rho Algorithm	3083.286482
+57	Pollard's Rho Algorithm	1583.803046
+58	Pollard's Rho Algorithm	8416.254496
+59	Pollard's Rho Algorithm	11321.818036
+60	Pollard's Rho Algorithm	9655.960219

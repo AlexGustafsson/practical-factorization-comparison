@@ -1,0 +1,31 @@
+Below, in figure \ref{fig:QuadraticSieve}, the total time taken to factorize each of the numbers tested can be seen. A lower value means a faster factorization, which is better. The table shows the time taken to factorize each number, as well as the parameters $B$ and $V$ used.
+
+\input{QuadraticSievePlots/allTested.tex}
+
+\begin{figure}[H]
+\centering
+\pgfplotstabletypeset[
+    columns={label, B, V, y},
+    every head row/.style={
+        before row=\toprule,
+        after row=\midrule
+    },
+    columns/label/.style={
+        column name=$n$
+    },
+    columns/B/.style={
+        column name=$B$
+    },
+    columns/V/.style={
+        column name=$V$
+    },
+    columns/y/.style={
+        column name=Total time (s),
+        precision=9
+    },
+    every last row/.style={
+        after row=\bottomrule
+    }]{QuadraticSievePlots/allTested.dat}
+\vspace{-0.3cm}
+\caption{Tested numbers}\label{fig:QuadraticSieveTable}
+\end{figure}

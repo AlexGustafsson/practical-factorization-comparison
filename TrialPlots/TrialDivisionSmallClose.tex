@@ -1,0 +1,95 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.6, trim axis left, trim axis right]
+\begin{axis}[
+    width=1\textwidth,
+    height=1\textwidth,
+    xlabel={Number of factors},
+    ylabel={Time taken (s)},
+    xmin=1.0, xmax=21.0,
+    ymin=4.7e-05, ymax=0.000462,
+    xticklabels={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    xtick={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    ytick={4.7e-05, 8.85e-05, 0.00013, 0.0001715, 0.000213, 0.0002545, 0.000296, 0.0003375, 0.000379, 0.0004205},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-max}] {
+    x    y    y-max
+    11	0.000224025	6.2975e-05
+10	0.000219325	7.1675e-05
+13	0.000260275	7.1725e-05
+12	0.000242125	7.0875e-05
+15	0.00029895	5.405e-05
+14	0.000279325	5.6675e-05
+17	0.00033785	6.115e-05
+16	0.000310075	9.4925e-05
+19	0.000376075	4.5925e-05
+18	0.00036165	7.335e-05
+20	0.000408825	5.3175e-05
+3	6.965e-05	5.635e-05
+2	7.3225e-05	7.1775e-05
+5	0.000111675	1.5325e-05
+4	9.2925e-05	2.3075e-05
+7	0.000146	5e-05
+6	0.0001277	4.43e-05
+9	0.000198575	0.000148425
+8	0.00018135	2.565e-05
+
+    };
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-min}] {
+    x    y    y-min
+    11	0.000224025	-7.0025e-05
+10	0.000219325	-4.1325e-05
+13	0.000260275	-5.1275e-05
+12	0.000242125	-5.4125e-05
+15	0.00029895	-5.895e-05
+14	0.000279325	-3.1325e-05
+17	0.00033785	-4.785e-05
+16	0.000310075	-5.1075e-05
+19	0.000376075	-5.8075e-05
+18	0.00036165	-5.265e-05
+20	0.000408825	-2.0825e-05
+3	6.965e-05	-2.165e-05
+2	7.3225e-05	-2.6225e-05
+5	0.000111675	-1.9675e-05
+4	9.2925e-05	-1.1925e-05
+7	0.000146	-2.2e-05
+6	0.0001277	-3.97e-05
+9	0.000198575	-3.9575e-05
+8	0.00018135	-3.035e-05
+
+    };
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-0.3cm}
+\caption{Small primes, close primes}\label{fig:TrialDivisionSmallcloseprimesfactors}
+\end{figure}

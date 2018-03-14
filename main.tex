@@ -1,0 +1,78 @@
+
+\documentclass{report}
+% ------
+% UTF-8 support
+\usepackage[utf8]{inputenc}
+\usepackage[noadjust]{cite}
+\usepackage[toc,page]{appendix}
+
+% ------
+% Titling (section/subsection)
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge}
+\renewcommand\bibname{References}
+\titlespacing{\chapter}{0pt}{0pt}{15pt}
+
+% ------
+% Clickable URLs (optional)
+\usepackage{hyperref}
+
+% ------
+% Other
+\usepackage{lipsum}
+\usepackage{minted}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage{lscape}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{amssymb}
+\usepackage[justification=centering]{caption}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{seqsplit}
+
+% Provides the H option for figures
+\usepackage{float}
+
+\begin{document}
+
+\title{A Practical Study and Comparison of Integer Factorization Methods}
+
+\author{Alex Gustafsson \& Marcus Lenander}
+\date{March 14, 2018}
+\maketitle
+
+% Abstract
+\input{pages/abstract.tex}
+
+% ToC
+\tableofcontents
+\newpage
+
+% Introduction
+\input{pages/introduction.tex}
+
+% Method
+\input{pages/methods.tex}
+
+% Result
+\input{pages/result.tex}
+
+% Discussion
+\input{pages/discussion.tex}
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,bibliography}
+
+% Appending
+\begin{appendices}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+    %\input{pages/appendix.tex}
+\end{appendices}
+
+\end{document}

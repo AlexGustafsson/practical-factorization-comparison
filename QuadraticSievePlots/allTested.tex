@@ -1,0 +1,29 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.6, trim axis left, trim axis right]
+\begin{axis}[
+    width=1\textwidth,
+    height=1\textwidth,
+    xmin=0, xmax=16,
+    ymin=0.1, ymax=25,
+    xlabel={Number tested},
+    ylabel={Time taken (s)},
+    xticklabels={,21, 527, 651, 1271, 3385, 3465, 4699, 7161, 7905, 53357, 87463, 356779, 7416389, 9505247, 21593381,},
+    xtick={0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16},
+    ytick={0.100000000000000, 2.59000000000000, 5.08000000000000, 7.57000000000000, 10.0600000000000, 12.5500000000000, 15.0400000000000, 17.5300000000000, 20.0200000000000, 22.5100000000000},
+    x tick label style={rotate=45, anchor=east, align=right,text},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot[
+    blue,
+    only marks,
+    very thick,
+] table[x=x, y=y] {QuadraticSievePlots/allTested.dat};
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-0.3cm}
+\caption{Tested numbers}\label{fig:QuadraticSieve}
+\end{figure}

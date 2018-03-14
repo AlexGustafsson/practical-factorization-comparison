@@ -1,0 +1,95 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.6, trim axis left, trim axis right]
+\begin{axis}[
+    width=1\textwidth,
+    height=1\textwidth,
+    xlabel={Number of factors},
+    ylabel={Time taken (s)},
+    xmin=1.0, xmax=21.0,
+    ymin=0.003034, ymax=0.019323,
+    xticklabels={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    xtick={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20},
+    ytick={0.003034, 0.0046629, 0.0062918, 0.0079207, 0.0095496, 0.0111785, 0.0128074, 0.0144363, 0.0160652, 0.0176941},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-max}] {
+    x    y    y-max
+    11	0.01209785	0.00020715
+10	0.01150945	0.00126655
+13	0.0108653	0.0002817
+12	0.0116173	0.0002487
+15	0.01187345	0.00024655
+14	0.01138625	0.00019675
+17	0.0115855	0.0050095
+16	0.0126451	0.0003619
+19	0.01113385	0.00017515
+18	0.0126387	0.0007893
+20	0.01229985	0.00018915
+3	0.0074304	0.0001476
+2	0.00789935	0.00157465
+5	0.0099631	0.0029649
+4	0.00309665	7.535e-05
+7	0.01095065	0.00022435
+6	0.0086418	0.0027242
+9	0.01317435	0.00614865
+8	0.01097465	0.00048535
+
+    };
+
+\addplot+[
+    blue,
+    very thick,
+    forget plot,
+    only marks
+    ]
+    plot[
+    very thick,
+    error bars/.cd,
+    y dir=plus,
+    y explicit
+    ]
+    table[x=x,y=y,y error expr=\thisrow{y-min}] {
+    x    y    y-min
+    11	0.01209785	-0.00033785
+10	0.01150945	-0.00024945
+13	0.0108653	-0.0001963
+12	0.0116173	-0.0002843
+15	0.01187345	-0.00029745
+14	0.01138625	-0.00029625
+17	0.0115855	-0.0005035
+16	0.0126451	-0.0002111
+19	0.01113385	-0.00026885
+18	0.0126387	-0.0003327
+20	0.01229985	-0.00020285
+3	0.0074304	-0.0001624
+2	0.00789935	-0.00033235
+5	0.0099631	-0.0004131
+4	0.00309665	-6.265e-05
+7	0.01095065	-0.00021765
+6	0.0086418	-0.0003648
+9	0.01317435	-0.00094535
+8	0.01097465	-0.00024965
+
+    };
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-0.3cm}
+\caption{Medium primes, modified algorithm}\label{fig:TrialDivisionmediumprimes(modified:True)factors}
+\end{figure}
