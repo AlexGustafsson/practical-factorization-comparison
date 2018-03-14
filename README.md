@@ -21,7 +21,6 @@ See also: [Course Notes](https://github.com/CourseNotesBTH) for BTH courses and 
 [Quickstart](#quickstart)<br/>
 [Algorithms]("#algorithms")<br />
 [Utilities]("#utilities")<br />
-[Contributing](#contributing)<br/>
 [Disclaimer](#disclaimer)
 
 # Implemented algorithms
