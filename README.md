@@ -1,10 +1,12 @@
-A practical study and comparison of integer factorization methods
+A Practical Study and Comparison of Integer Factorization Methods
 ======
 A project by [Alex Gustafsson](https://github.com/AlexGustafsson) and [Marcus Lenander](https://github.com/MarcusLenander) in the course MA1453 (Cryptography 2) at BTH, Sweden.
 
 This project evaluates the relative performance of various algorithms for integer factorization, namely Trial Division, Fermat's Factorization, Pollard's Rho Algorithm, Lenstra's Elliptic Curve Factorization Algorithm and briefly the Quadratic Sieve. The algorithms are presented and described with regards to use and implementation details. No effort was made to optimize the implemented algorithms further than what is considered logical. No algorithm leverages parallel computing techniques, dynamic programming techniques or other techniques in order to gain performance. No consideration of performance was made when the software and programming stack were chosen.
 
 The project was hosted on a private instance of [CoCalc - Collaborative Calculation in the Cloud](https://cocalc.com). CoCalc makes it easy to collaboratively develop math-oriented code using technologies such as [SageMath](http://www.sagemath.org), [R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html), [Julia](https://docs.julialang.org/en/stable/manual/introduction/) and [LaTeX](https://en.wikibooks.org/wiki/LaTeX) whilst still being completely free and open source.
+
+The paper is available in the branch [paper](https://github.com/AlexGustafsson/practical-factorization-comparison/tree/paper).
 
 See also: [Course Notes](https://github.com/CourseNotesBTH) for BTH courses and code and examples for [Programming Courses at BTH](https://github.com/ProgrammingCoursesBTH).
 
@@ -110,7 +112,7 @@ x, y, A = random element in Zn
 Q = (x, y)
 if a modular inverse exists:
     P = Q + Q
-    while P + Q can be calculated 
+    while P + Q can be calculated
         if iterations is less then maximum iterations
             if modular inverse exists in kP
                 kP = (k-1)P + Q
