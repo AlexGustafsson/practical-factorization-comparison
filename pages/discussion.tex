@@ -98,7 +98,7 @@ In regards to the fact that the algorithm succeeded in completing all of our ben
 
 Lenstra's Elliptic Curve Factorization Method performed similarly to both Fermat's Factorization and Pollard's Rho Algorithm for bit counts lower than $18$. The algorithm was the fastest $5$ out of $31$ times. Lenstra's algorithm was the fastest for the first three tested numbers.
 
-\section{Multiple Factors}
+\subsection{Multiple Factors}
 
 Trial Division did not meet the expectations we had in mind, this is due to the fact that we did not alter the original algorithm beyond changing the stepping mode. The main reason why our implementation of Trial division is slow can be linked to that when a factor is found the algorithm starts from the beginning again - counting upwards from one. This led to many unwanted iterations compared to starting from the found factor since Trial Division is known to find the factors in ascending order. Trial Division performed better on small multiple primes than Pollard's Rho Algorithm. Both forms of Trial Division completed all number suites containing multiple factors.
 
