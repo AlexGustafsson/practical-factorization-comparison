@@ -35,11 +35,11 @@ Found in `trial_division.py`, the trial division algorithms implemented consists
 ##### `TrialDivision`
 
 ```
-def TrialDivision(N)
+def TrialDivision(n)
     f = 1
-    while N > 1
-        if N is divisable by f
-            f is a factor. Divide N by f
+    while n > 1
+        if n is divisible by f
+            f is a factor. Divide n by f
         else
             increment f by one
 ```
@@ -49,13 +49,13 @@ def TrialDivision(N)
 A modification of the above Trial Division that halves the needed time.
 
 ```
-def TrialDivision(N)
+def TrialDivision(n)
     f = 3
-    while N is divisable by 2
-        2 is a factor. Divide N by 2
-    while N > 1
-        if N is divisable by f
-            f is a factor. Divide N by f
+    while n is divisible by 2
+        2 is a factor. Divide n by 2
+    while n > 1
+        if n is divisible by f
+            f is a factor. Divide n by f
         else
             increment f by 2
 ```
@@ -65,16 +65,17 @@ def TrialDivision(N)
 Found in `fermats_factorization.py`, the Fermat's algorithm implemented consists of the following pseudocode:
 
 ```
-if n % 2 == 0:
-    return None
-
-a = ceil(sqrt(n))
-b2 = a*a - n
-while b2 is not square:
-    a += 1
+def FermatsFactorization(n)
+    if n % 2 == 0:
+        return None
+        
+    a = ceil(sqrt(n))
     b2 = a*a - n
-b = sqrt(b2)
-return p = (a + b), q = (a - b)
+    while b2 is not square:
+        a += 1
+        b2 = a*a - n
+    b = sqrt(b2)
+    return p = (a + b), q = (a - b)
 ```
 
 ## Pollard's Rho Algorithm
@@ -82,22 +83,23 @@ return p = (a + b), q = (a - b)
 Found in `pollards_rho_algorithm.py`, the Pollard's algorithm implemented consists of the following pseduocode:
 
 ```
-if N is 1
-    1 is a factor. Stop
-add N to the stack 'stack' to try with the first g(x)
-while the stack is not empty
-    pop an element a from the stack
-    if a is prime
-        a is a factor
-    else
-        f = 1, x = 2, y = 2
-        while f is 1
-            x = g(x), y = g(g(x))
-            f = gcd(x - y, a)
-        if f is N
-            add a to stack to try with the next g(x)
+def PollardsRhoAlgorithm(n)
+    if n is 1
+        1 is a factor. Stop
+    add n to the stack 'stack' to try with the first g(x)
+    while the stack is not empty
+        pop an element a from the stack
+        if a is prime
+            a is a factor
         else
-            add f and a / f to the stack
+            f = 1, x = 2, y = 2
+            while f is 1
+                x = g(x), y = g(g(x))
+                f = gcd(x - y, a)
+            if f is n
+                add a to stack to try with the next g(x)
+            else
+                add f and a / f to the stack
 ```
 
 _Note: the function `g(x)` is tested in the following order: `g(x)=x^2+1`, `g(x)=x^3+1`, `g(x)=x+1`. If you're interested in why those functions are tested in that order, please refer to the paper._
@@ -107,20 +109,21 @@ _Note: the function `g(x)` is tested in the following order: `g(x)=x^2+1`, `g(x)
 Found in `lenstras_elliptic_curve_factorization.py`, the Lenstra's algorithm implemented consists of the following pseudocode:
 
 ```
-x, y, A = random element in Zn
-Q = (x, y)
-if a modular inverse exists:
-    P = Q + Q
-    while P + Q can be calculated
-        if iterations is less then maximum iterations
-            if modular inverse exists in kP
-                kP = (k-1)P + Q
+def LenstrasEllipticCurveFactorizationAlgorithm(n)
+    x, y, A = random element in Zn
+    Q = (x, y)
+    if a modular inverse exists:
+        P = Q + Q
+        while P + Q can be calculated 
+            if iterations is less then maximum iterations
+                if modular inverse exists in kP
+                    kP = (k-1)P + Q
+                else
+                    add gcd(modular inverse, n) to the stack of factors
             else
-                add gcd(modular inverse, n) to the stack of factors
-        else
-            no factor found, try with new random elements
-else
-    add gcd(modular inverse, n) to the stack of factors
+                no factor found, try with new random elements
+    else
+        add gcd(modular inverse, n) to the stack of factors
 ```
 
 ## Quadratic Sieve
