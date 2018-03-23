@@ -8,7 +8,7 @@ Below are three plots used to determine the best choice for $g(x)$ when factoriz
     \caption{All four tested modes}\label{fig:pollardsAllModes}
 \end{figure}
 
-For small factors, all modes seem to perform equally well. More bits seem to make $g(x)=x+1$ (shown in orange) struggle. Removing the function from the plot yields another overview of the situation - figure \ref{fig:pollardsFasterModes} below.
+For Small factors, all modes seem to perform equally well. More bits seem to make $g(x)=x+1$ (shown in orange) struggle. Removing the function from the plot yields another overview of the situation - figure \ref{fig:pollardsFasterModes} below.
 
 \begin{figure}[H]
     \centering
@@ -17,7 +17,7 @@ For small factors, all modes seem to perform equally well. More bits seem to mak
     \caption{The fastest three modes}\label{fig:pollardsFasterModes}
 \end{figure}
 
-For small factors, there still seem to be more or less equal performance for all of the choices. The choice of $g(x)=x^2+3$ (shown in red) struggles for one particular number consisting of $24$ bits. Removing that choice yields the last overview, that of the two fastest modes - shown in figure \ref{fig:pollardsFastestModes} below.
+For Small factors, there still seem to be more or less equal performance for all of the choices. The choice of $g(x)=x^2+3$ (shown in red) struggles for one particular number consisting of $24$ bits. Removing that choice yields the last overview, that of the two fastest modes - shown in figure \ref{fig:pollardsFastestModes} below.
 
 \begin{figure}[H]
     \centering
@@ -26,7 +26,7 @@ For small factors, there still seem to be more or less equal performance for all
     \caption{The fastest two modes}\label{fig:pollardsFastestModes}
 \end{figure}
 
-For factors of lower bit count, $g(x)=x^2+1$ (shown in blue) and $g(x)=x^3+1$ (shown in green) seem to perform equally well. For larger bit count, blue seem to perform better.
+For factors of lower bit count, $g(x)=x^2+1$ (shown in blue) and $g(x)=x^3+1$ (shown in green) seems to perform equally well. For larger bit count, blue seems to perform better.
 
 The choice of $g(x)=x^2+1$ and $g(x)=x^2+3$ failed to factorize a number consisting of prime factors of two bits.
 
@@ -36,7 +36,7 @@ Due to how $g(x)=x^2+1$ seemed to perform the best overall, but failed to factor
 
 \subsection{Differences in Choice of $x_0$ and $y_0$}
 
-Below is a plot used to determine the best choice for the start values $x_0$ and $y_0$ when factorizing a number consisting of two prime factors. A lower value refers to lower time taken which is considered better. Figure \ref{fig:pollardsStart} displays the two tested start values. Blue represents $x_0=y_0=2$. Green represents $x_0=y_0=\ceil[\big]{\sqrt{n}}$ where $n$ is the number to factorize.
+Below is a plot used to determine the best choice for the start values $x_0$ and $y_0$ when factorizing a number consisting of two prime factors. A lower value refers to lower time taken which is considered better. Figure \ref{fig:pollardsStart} displays the two tested start values. Blue represents $x_0=y_0=2$. Green represents $x_0=y_0=\ceil[\big]{\sqrt{n}}$ where $n\in\mathbb{N}$ is the number to factorize.
 
 \begin{figure}[H]
     \centering
@@ -65,7 +65,7 @@ From the figure \ref{fig:PollardsRhoAlgorithmsmallprimesfactors} one can tell th
 
 \input{PollardPlots/PollardMediumFactors.tex}
 
-The figure \ref{fig:PollardsRhoAlgorithmmediumprimesfactors} shows signs of even more irregularity than figure \ref{fig:PollardsRhoAlgorithmsmallprimesfactors}. The average span between the lowest time taken and the maximum time taken is lower than the first figure. The slight correlation with every two data points seen in the previous figure seem to be lost. Interestingly the first data point, for two factors, seem to take about the same time as the first number tested for small primes.
+The figure \ref{fig:PollardsRhoAlgorithmmediumprimesfactors} shows signs of even more irregularity than figure \ref{fig:PollardsRhoAlgorithmsmallprimesfactors}. The average span between the lowest time taken and the maximum time taken is lower than the first figure. The slight correlation with every two data points seen in the previous figure seem to be lost. Interestingly the first data point, for two factors, seem to take about the same time as the first number tested for Small primes.
 
 \input{PollardPlots/PollardLargeFactors.tex}
 
@@ -73,7 +73,7 @@ The figure \ref{fig:PollardsRhoAlgorithmLargerprimesfactors} show one extreme po
 
 \input{PollardPlots/PollardLargeFactors2.tex}
 
-The figure shows an average span between the maximum time taken and the minimum time taken to factorize a number is about the same as shown for medium sized prime factors in figure \ref{fig:PollardsRhoAlgorithmmediumprimesfactors}.
+The figure shows an average span between the maximum time taken and the minimum time taken to factorize a number is about the same as shown for Medium sized prime factors in figure \ref{fig:PollardsRhoAlgorithmmediumprimesfactors}.
 
 \input{PollardPlots/PollardLargerFactors.tex}
 
@@ -83,7 +83,7 @@ When factorizing even larger numbers consisting of up to $20$ prime factors, Pol
 
 \input{PollardPlots/PollardSmallCloseFactors.tex}
 
-Figure \ref{fig:PollardsRhoAlgorithmSmallcloseprimesfactors} shows numbers consisting of small prime factors close to one another. The factorization time span is clearly higher than that of previous benchmarks. The highest time taken for small primes shown in figure \ref{fig:PollardsRhoAlgorithmsmallprimesfactors} is about the same as the highest time taken for small close primes, shown above.
+Figure \ref{fig:PollardsRhoAlgorithmSmallcloseprimesfactors} shows numbers consisting of Small prime factors close to one another. The factorization time span is clearly higher than that of previous benchmarks. The highest time taken for Small primes shown in figure \ref{fig:PollardsRhoAlgorithmsmallprimesfactors} is about the same as the highest time taken for Small close primes, shown above.
 
 \input{PollardPlots/PollardMediumCloseFactors.tex}
 

@@ -5,16 +5,16 @@
 \section{Definitions}
 
 \subsection{Factor and Trivial Factor}
-In this paper, a \textit{factor} to a number $n\in\mathbb{Z}$ is a number $d\in\mathbb{Z}, d\notin\{1, n\}$ so that $d$ evenly divides $n$. A \textit{trivial factor} to a number $n\in\mathbb{Z}$ is a number $d\in\{1, n\}$.
+In this paper, a \textit{factor} to a number $n\in\mathbb{N}$ is a number $d\in\mathbb{N}, d\notin\{1, n\}$ so that $d$ evenly divides $n$. A \textit{trivial factor} to a number $n\in\mathbb{N}$ is a number $d\in\{1, n\}$.
 
 \subsection{The Size of Primes}
-In this paper, different sizes of primes are mentioned. These sizes are small, medium, large and larger. In other cases, the size is made clear by the amount of bits representing the prime.
+In this paper, different sizes of primes are mentioned for simplicity's sake. These sizes are \textit{Small}, \textit{Medium}, \textit{Large} and \textit{Larger}. In other cases, the size is made clear by the amount of bits representing the prime.
 
-Small primes are primes $p$ such that $2\leq p \leq 100$ (up to $7$ bits). Medium primes are primes $p$ such that $1000 \leq 10000$ (up to $14$ bits). Large primes are primes $p$ such that $50000\leq p \leq 100000$ (up to $17$ bits). Larger primes are primes $p$ such that $250000\leq p \leq 1000000$ (up to $20$ bits). These sizes are usually mentioned when a number consists of multiple prime factors.
+\textit{Small} primes are primes $p$ such that $2\leq p \leq 100$ (up to $7$ bits). \textit{Medium} primes are primes $p$ such that $1000 \leq p \leq 10000$ (up to $14$ bits). \textit{Large} primes are primes $p$ such that $50000\leq p \leq 100000$ (up to $17$ bits). \textit{Larger} primes are primes $p$ such that $250000\leq p \leq 1000000$ (up to $20$ bits). These sizes are usually mentioned when a number consists of multiple prime factors.
 
-These sizes bear no resemblance of the actual size of the primes. The size of primes used in the modern crypto RSA should use at least $1024$ bit primes until the year of 2030\cite{keysize}.
+These sizes bear no resemblance to the size of primes usually used in cryptography. The size of primes used in the modern crypto RSA, for example, should use at least $1024$ bit primes until the year of 2030\cite{keysize}.
 
-In this paper, the approximate size of a number in bits was calculated using $\ceil{\log_2{n}},\;n\in\mathbb{Z}$.
+In this paper, the approximate size of a number in bits was calculated using $\ceil{\log_2{n}},\;n\in\mathbb{N}$.
 
 %%%%
 %% TRIAL DIVISION
@@ -22,9 +22,9 @@ In this paper, the approximate size of a number in bits was calculated using $\c
 \subsection{Trial Division}
 Trial Division is one of the simplest factorization algorithms. The algorithm divides a composite number $n$ by possible factors $p$ in the range $2 \leq p < \floor{\sqrt{n}}$. Usually the factors are tested from either the smallest value to the largest, or the opposite. The values are usually increased by one or to the next odd number\cite{trialDivisionAndFermats}.
 
-To visualize the algorithm, here is how one method of Trial Division factorizes $n=15=3*5$. Note that $\leftarrow$ indicates assignment of a value.
+To visualize the algorithm, here is how one method of Trial Division factorizes $n=15=3\cdot5$. Note that $\leftarrow$ indicates assignment of a value.
 
-Start off with a possible factor $f=2$. $n=15$ is not evenly divisible by $2$, therefore $f\leftarrow2+1=3$. $N$ is however evenly divisible by $3$, therefore $N\leftarrow n/3=15/3=5$. $3$ is marked a factor and $f\leftarrow3+1=4$. $n$ is not evenly divisible by $4$, therefore we increment $f$ once more. At last, $f=5$ evenly divides $n=5$, resulting in $n=1$. The last factor, $5$, has now been found, and since $n=1$ we recognize that there are no more factors and stop. We can conclude that $15=3*5$.
+Start off with a possible factor $f=2$. The composite number $n=15$ is not divisible by $2$, therefore $f\leftarrow2+1=3$. The number $n$ is however divisible by $3$, therefore $n\leftarrow n/3=15/3=5$. A factor $3$ has been found and $f\leftarrow3+1=4$. Our remainder $n$ is not divisible by $4$, therefore we increment $f$ once more. At last, $f=5$ divides $n=5$, resulting in $n=1$. The last factor, $5$, has now been found, and since $n=1$ we recognize that there are no more factors and stop. We can conclude that $15=3\cdot5$.
 
 %%%%
 %% FERMAT'S FACTORIZATION
@@ -38,11 +38,11 @@ For a more useful understanding of the method let $n=39$. Set $a=\ceil{\sqrt{39}
 %% POLLARD'S RHO ALGORITHM
 %%%%
 \subsection{Pollard's Rho Algorithm}
-Pollards Rho ($\rho$) Algorithm for factorization is based on Floyd's detection algorithm for cycles. The basic idea is to iterate a function, $g(x)$ until it falls into a cycle. This function is typically described as $g(x)=x^2+1$. \cite{pollardsRhoAlgorithm}\cite{pollardsRhoAlgorithm2}.
+Pollards Rho ($\rho$) Algorithm for factorization is based on Floyd's detection algorithm for cycles. The basic idea is to iterate a function, $g(x)$ until it falls into a cycle. This function is typically chosen to be $g(x)=x^2+1$. \cite{pollardsRhoAlgorithm}\cite{pollardsRhoAlgorithm2}.
 
-To visualize the algorithm, the factorization of $n=15=3*5$ will be described. Note that $\leftarrow$ indicates assignment of a value.
+To visualize the algorithm, the factorization of $n=15=3\cdot5$ will be described. Note that $\leftarrow$ indicates assignment of a value.
 
-Let $f=1$, $x=2$, $y=2$ and $g(x)=x^2+1$. Calculate $x=g(x)=g(2)=2^2+1=5$ and $y=g(g(x))=g(g(2))=(2^2+1)^2+1=26$. Since $gcd(x - y, n)=gcd(5 - 26, 15)=3$ is not a trivial factor, we have found a factor. The last factor is calculated by dividing $n$ by $3$ resulting in $5$. We can conclude that $15=3*5$.
+Let $f=1$, $x=2$, $y=2$ and $g(x)=x^2+1$. Calculate $x=g(x)=g(2)=2^2+1=5$ and $y=g(g(x))=g(g(2))=(2^2+1)^2+1=26$. Since $\gcd(x - y, n)=\gcd(5 - 26, 15)=3$ is not a trivial factor, we have found a factor. The last factor is calculated by dividing $n$ by $3$ resulting in $5$. We can conclude that $15=3\cdot5$.
 
 %%%%
 %% LENSTRA'S ELLIPTIC CURVE FACTORIZATION ALGORITHM
@@ -107,14 +107,14 @@ $3P = (12, 19)$. $3P$ could also be calculated. Continue once more.
     \end{array}
 \end{equation*}
 
-Calculating $10^-1\;(mod\;35)$ we notice that $gcd(10,35)=5≠1$. When the greatest common divider does not equal one, we have found our factor. $35$ was factorized successfully.
+Calculating $10^{-1}\;(mod\;35)$ we notice that $gcd(10,35)=5\neq1$. When the greatest common divider does not equal one, we have found our factor. $35$ was factorized successfully.
 
 %%%%
 %% THE QUADRATIC SIEVE
 %%%%
 \subsection{The Quadratic Sieve}
 
-The Quadratic Sieve is considered one of the fastest integer factorization methods. Not entirely different from Fermat's Factorization method, the Quadratic Sieve algorithm finds values for $a$ and $b$ making $a^2\iff b^2\;(\text{mod}\;n)$ where $n$ is the number to factorize \cite{quadraticSieve}. Given $a$ and $b$, two factors $gcd(a-b, n)$ and $gcd(a+b, n)$ can be retrieved. Instead of stepping to find the solution like with Fermat's method, the Quadratic Sieve \textit{sieves} its way through. This results in a much faster algorithm. The algorithm generally relies on two parameters, $B$ and $V$. The choice of the parameters are non-trivial \cite{Cryptography101}. Generally $B$ should be close to $L(n)$ where $L(n)$ is the nearest integer to $e^\sqrt{\ln{n}*\ln{\ln{n}}}$. The decision of the parameters will heavily impact the capability and performance of the algorithm. The parameter $V$ should generally be between $B$ and $B^2$. Given the complexity of the algorithm and the time required to properly describe the algorithm and provide examples, the authors have decided to refer to E. Landquist (\cite{quadraticSieve}) and R. Nyqvist (\cite{Cryptography101}) for further information.
+The Quadratic Sieve is considered one of the fastest integer factorization methods. Not entirely different from Fermat's Factorization method, the Quadratic Sieve algorithm finds values for $a$ and $b$ making $a^2\equiv b^2\;(\text{mod}\;n)$ where $n\in\mathbb{N}$ is the number to factorize \cite{quadraticSieve}. Given $a$ and $b$, two factors $\gcd(a-b, n)$ and $\gcd(a+b, n)$ can be retrieved. Instead of stepping to find the solution like with Fermat's method, the Quadratic Sieve \textit{sieves} its way through. This results in a much faster algorithm. The algorithm generally relies on two parameters, $B$ and $V$. The choice of the parameters are non-trivial \cite{Cryptography101}. Generally $B$ should be close to $L(n)$ where $L(n)$ is the nearest integer to $e^{\sqrt{\ln{n}\cdot\ln{\ln{n}}}}$. The decision of the parameters will heavily impact the capability and performance of the algorithm. The parameter $V$ should generally be between $B$ and $B^2$. Given the complexity of the algorithm and the time required to properly describe the algorithm and provide examples, the authors have decided to refer to E. Landquist (\cite{quadraticSieve}) and R. Nyqvist (\cite{Cryptography101}) for further information.
 
 \subsection{Diagram Format}
 The format of the diagrams used in this paper was constructed to be easy to read. Instead of plotting the data, which in its raw format can span several hundred lines, the maximum, average and minimum value is presented.
