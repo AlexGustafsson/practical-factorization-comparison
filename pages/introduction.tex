@@ -30,9 +30,9 @@ Start off with a possible factor $f=2$. The composite number $n=15$ is not divis
 %% FERMAT'S FACTORIZATION
 %%%%
 \subsection{Fermat's Factorization}
-Fermat's Factorization method finds the difference of two squares $n = a^2 - b^2$. This method can only factorize odd numbers. To visualize the method, set $a = \ceil{\sqrt{n}}$ and $b^2 = a^2 - n$. If the square root of $b^2$ is not a whole number, continue the search for the factors. This is done by setting $a = a + 1$ and $b^2 = a^2 - n$. The factors are then determined by $p = (a + b)$ and $q = (a - b)$ \cite{trialDivisionAndFermats}.
+Fermat's Factorization method finds the difference of two squares $n = a^2 - b^2$. This method can only factorize odd numbers. To visualize the method, set $a \leftarrow \ceil{\sqrt{n}}$ and $b^2 \leftarrow a^2 - n$. If the square root of $b^2$ is not a whole number, continue the search for the factors. This is done by setting $a \leftarrow a + 1$ and $b^2 \leftarrow a^2 - n$. The factors are then determined by $p = (a + b)$ and $q = (a - b)$ \cite{trialDivisionAndFermats}.
 
-For a more useful understanding of the method let $n=39$. Set $a=\ceil{\sqrt{39}}$. Calculate $b^2 = 7^2-39 = 10$. Since ten is not a square number set $a=7+1$. Next step is to once more calculate $b^2$ with the new value of $a$. $b^2 = 8^2-39 = 25$. $b^2=25 \Leftrightarrow b=\sqrt{25} = 5$. A square number was found. The factors, $p$ and $q$, are given by $p=(8+5)=13$ and $q=(8-5)=3$ 
+For a more useful understanding of the method let $n=39$. Set $a \leftarrow \ceil{\sqrt{39}}$. Calculate $b^2 \leftarrow 7^2-39 = 10$. Since ten is not a square number set $a \leftarrow 7+1$. Next step is to once more calculate $b^2$ with the new value of $a$. $b^2 \leftarrow 8^2-39 = 25$. $b^2=25 \Rightarrow b=\sqrt{25} = 5$. A square number was found. The factors, $p$ and $q$, are given by $p=(8+5)=13$ and $q=(8-5)=3$ 
 
 %%%%
 %% POLLARD'S RHO ALGORITHM
@@ -48,9 +48,9 @@ Let $f=1$, $x=2$, $y=2$ and $g(x)=x^2+1$. Calculate $x=g(x)=g(2)=2^2+1=5$ and $y
 %% LENSTRA'S ELLIPTIC CURVE FACTORIZATION ALGORITHM
 %%%%
 \subsection{Lenstra's Elliptic Curve Factorization Algorithm}
-Lenstra's Elliptic Curve Factorization Algorithm's goal is to find a failure. Since the elliptic curve is not in a field because a prime is not used in the generation of the curve, not all numbers will have a modular inverse \cite{LenstrasFactorizationAlgorithm}. To give a more descriptive view, below is how the algorithm factorizes a number $n$.
+Lenstra's Elliptic Curve Factorization Algorithm's goal is to find a failure. Since the elliptic curve is not in a group because a prime is not used in the generation of the curve, not all numbers will have a modular inverse \cite{LenstrasFactorizationAlgorithm}. To give a more descriptive view, below is how the algorithm factorizes a number $n$.
 
-Let $n$ be a composite number and $A, x_1, y_1$ be random elements from $\mathbb{Z}_n \setminus \{0,1\}$. Set $B$ to $y_1^2 - x_1^3 - Ax_1\; (\text{mod}\;n)$ and $P_1 = (x_1,y_1)$. If a solution to $P_k$ where $k = \{1,2,...,k_{max}\}$ is not found a  factor to $n$ is found. To decide the next $P$, $\lambda$ is needed. Its given by:
+Let $n\in\mathbb{N}$ be a composite number and $A, x_1, y_1$ be random elements from $\mathbb{Z}_n \setminus \{0,1\}$. Set $B \leftarrow y_1^2 - x_1^3 - Ax_1\; (\text{mod}\;n)$ and $P_1 = (x_1,y_1)$. If a solution to $P_k$ where $k = \{1,2,...,k_{max}\}$ is not found a  factor to $n$ is found. To decide the next $P$, $\lambda$ is needed. Its given by:
 
 \begin{equation*}
     \lambda = \left\{\begin{array}{l l}
@@ -59,7 +59,7 @@ Let $n$ be a composite number and $A, x_1, y_1$ be random elements from $\mathbb
     \end{array}\right.
 \end{equation*}
 
-Note that the power to the negative one is the modular inverse. If the modular inverse does not exist, a factor has been found. The factor is determined by the $gcd(modular inverse, n)$. Moreover if the inverse does exist, continue calculating the next $P$. $P_k$ is given by:
+Note that the power to the negative one is the modular inverse. If the modular inverse does not exist, a factor has been found. The factor is determined by the $\gcd(x_{k-1}-x_k, n)$. Moreover if the inverse does exist, continue calculating the next $P$. $P_k$ is given by:
 
 \begin{equation*}
     \begin{array}{l}
@@ -71,35 +71,35 @@ Note that the power to the negative one is the modular inverse. If the modular i
     \end{array}
 \end{equation*}
 
-$P_k = P_{k-1} + P_1 = (x_k,y_k)$. Repeat the process until the modular inverse can not be calculated.
+And finally $P_k = P_{k-1} + P_1 = (x_k,y_k)$. Repeat the process until the modular inverse can not be calculated.
 
 A more useful way to understand the algorithm is to see an example. This example is taken from "Introduktion till kryptologi" (\cite{Cryptography101}).
 Let $n = 35$ and $P = (2,1)$. The elliptic curve is given by $y^2 = x^3 + 4x + 20$.
 
 \begin{equation*}
-    \lambda = (3x_1^2 + A)(2y_1)^{-1} = (3*2^2+4)(2*1)^{-1} \equiv 8 \;(mod\;35)
+    \lambda = (3x_1^2 + A)(2y_1)^{-1} = (3*2^2+4)(2*1)^{-1} \equiv 8\pmod{35}
 \end{equation*}
 
 Continue by calculating $2P = P + P$.
 
 \begin{equation*}
     \begin{array}{l}
-        x_2 = \lambda^2 - x_1 - x_1 = 8^2 - 2 - 2 \equiv 25\;(mod\;35) \\
-        y_2 = \lambda(x_1 - x_2) - y_1 = 8*(2-25) - 1 \equiv 25\; (mod\;35)
+        x_2 = \lambda^2 - x_1 - x_1 = 8^2 - 2 - 2 \equiv 25\pmod{35} \\
+        y_2 = \lambda(x_1 - x_2) - y_1 = 8*(2-25) - 1 \equiv 25\pmod{35}
     \end{array}
 \end{equation*}
 
-$2P = (25, 25)$. Sins $2P$ could be calculate. Continue calculating the next point which is $3P$.
+Therefore $2P = (25, 25)$. Sins $2P$ could be calculate. Continue calculating the next point which is $3P$.
 
 \begin{equation*}
     \begin{array}{l}
-        \lambda = (y_2 - y_1)(x_2 - x_1)^{-1} = (25-1)(25-2)^{-1} \equiv 33 \; (mod\;35) \\
-        x_3 = \lambda^2 - x_1 - x_2 = 33^2 - 25 - 2 \equiv 12 \; (mod\;35)\\
-        y_2 = \lambda(x_1 - x_3) - y_1 = 33*(25-12)-25 \equiv 19 \; (mod\;35)
+        \lambda = (y_2 - y_1)(x_2 - x_1)^{-1} = (25-1)(25-2)^{-1} \equiv 33\pmod{35} \\
+        x_3 = \lambda^2 - x_1 - x_2 = 33^2 - 25 - 2 \equiv 12\pmod{35}\\
+        y_2 = \lambda(x_1 - x_3) - y_1 = 33*(25-12)-25 \equiv 19\pmod{35}
     \end{array}
 \end{equation*}
 
-$3P = (12, 19)$. $3P$ could also be calculated. Continue once more.
+Therefore $3P = (12, 19)$. $3P$ could also be calculated. Continue once more.
 
 \begin{equation*}
     \begin{array}{l}
@@ -107,7 +107,7 @@ $3P = (12, 19)$. $3P$ could also be calculated. Continue once more.
     \end{array}
 \end{equation*}
 
-Calculating $10^{-1}\;(mod\;35)$ we notice that $gcd(10,35)=5\neq1$. When the greatest common divider does not equal one, we have found our factor. $35$ was factorized successfully.
+Calculating $10^{-1}\pmod{35}$ we notice that $\gcd(10,35)=5\neq1$. When the greatest common divider does not equal one, we have found our factor. $35$ was factorized successfully.
 
 %%%%
 %% THE QUADRATIC SIEVE
