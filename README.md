@@ -19,8 +19,8 @@ See also: [Course Notes](https://github.com/CourseNotesBTH) for BTH courses and 
 # Table of contents
 
 [Quickstart](#quickstart)<br/>
-[Algorithms]("#algorithms")<br />
-[Utilities]("#utilities")<br />
+[Algorithms](#algorithms)<br />
+[Utilities](#utilities)<br />
 [Disclaimer](#disclaimer)
 
 # Implemented algorithms
