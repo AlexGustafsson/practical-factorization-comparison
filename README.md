@@ -302,7 +302,7 @@ The complete list of parameters supported by `.benchmark()`:
 | `optionalArgs` | `{}`| Map of optional parameter (key) and corresponding value (value) sent to the function that is being benchmarked | No |
 | `start` | `2` | The least number of factors to test, no matter the number suite | No |
 | `skipFactors` | `None` | A function that accepts a number, `numberOfFactors` and returns a boolean whether or not the benchmark should occur. Allows all numbers if `None` | No |
-`
+
 ## Benchmark
 
 Found in `benchmark.py`, the `Benchmark` class is a utility class to keep track of time and iterations.
